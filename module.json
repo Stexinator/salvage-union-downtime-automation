@@ -1,0 +1,54 @@
+{
+  "id": "salvage-union-downtime-automation",
+  "title": "Salvage Union Downtime Automation",
+  "version": "0.0.1",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "salvage-union",
+        "type": "system",
+        "compatibility": {}
+      }
+    ]
+  },
+  "description": "A module to help with downtime",
+  "authors": [
+    {
+      "name": "Stexinator",
+      "discord": "Stexinator",
+      "flags": {}
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json",
+      "flags": {}
+    }
+  ],
+  "includes": [
+    "./assets/**",
+    "./packs/**",
+    "./languages/**",
+    "./scripts/**",
+    "./styles/**",
+    "./templates/**",
+    "./module.json",
+    "./README.md"
+  ],
+  "esmodules": [
+    "scripts/hooks.js"
+  ],
+  "styles": [
+    "styles/module.css"
+  ],
+  "readme": "README.md",
+  "download": "download",
+  "manifest": "manifest"
+ 
+}
