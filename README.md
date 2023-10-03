@@ -6,3 +6,7 @@
   - prompts to roll on trading bay
 
 ## Changelog
+
+### 0.0.2
+  - reduced spam from starting downtime
+  - minor change of texts

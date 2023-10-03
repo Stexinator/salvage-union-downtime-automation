@@ -1,10 +1,10 @@
 {
     "salvage-union-downtime-automation": {
 
-      "trader": "The trader does his work",
+      "downtimeActions": "Downtime actions",
       "traderRoll": "Let the trader roll",
 
-      "pilotRefilled": " rested",
-      "mechRefilled": " was repaired and restocked"
+      "pilotRefilled": "All pilots have rested",
+      "mechRefilled": "All mechs were repaired and restocked"
     }
   }
