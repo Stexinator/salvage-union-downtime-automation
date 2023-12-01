@@ -5,11 +5,11 @@ import SalvageUnionDowntimeAutomationTrader from './trader.js'
 Hooks.on('renderSalvageUnionActorSheet', async function(actor, html) {
 
     if(actor.object.type == "union-crawler") {
-        SalvageUnionDowntimeAutomation.addDowntimeButton(html)
+        SalvageUnionDowntimeAutomation.addDowntimeButton(actor.object, html)
     }
 
-    html.find('.su-downtimeautomation-downtimebutton').on('click', _ => {
-        SalvageUnionDowntimeAutomation.startDowntime();
+    html.find('.su-downtimeautomation-downtimebutton').on('click', ev => {
+        SalvageUnionDowntimeAutomation.startDowntime(ev);
     })
 
     

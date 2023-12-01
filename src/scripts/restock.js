@@ -1,11 +1,12 @@
 export default class SalvageUnionDowntimeAutomationRestock {
-    static async refillActor(actor) {
+
+    static async refillActor(actor, techlevel) {
        if(actor.type == "pilot") {
         this.refillPilot(actor)
        }
 
        if(actor.type == "mech") {
-        this.refillMech(actor)
+        this.refillMech(actor, techlevel)
        }
     }
 
@@ -16,8 +17,9 @@ export default class SalvageUnionDowntimeAutomationRestock {
         
     }
 
-    static async refillMech(actor) {
+    static async refillMech(actor, techlevel) {
         this.refillAllItemsWithUses(actor)
+        this.repairItems(actor, techlevel)
         actor.update({ 'system.sp.value': actor.system.sp.max });
         actor.update({ 'system.energy-points.value': actor.system['energy-points'].max });
         actor.update({ 'system.heat.value': 0 });
@@ -34,6 +36,23 @@ export default class SalvageUnionDowntimeAutomationRestock {
 
         items.forEach(item => {
             item.update({'system.uses.value': item.system.uses.max})
+        })
+
+    }
+
+    static async repairItems(actor, techlevel) {
+        let systems = actor?.system?.systems || [];
+        let modules = actor?.system?.modules || [];
+        let chassis = actor?.system?.chassis || [];
+
+
+        // 0 = active, 1 = damaged, 2 = destroyed
+        let items = systems.concat(modules).concat(chassis).filter(item =>(item.system.status == 1))
+
+        items.forEach(item => {
+            if(parseInt(item.system.techLevel.replace("T", "")) <= parseInt(techlevel.replace("T", "")) ) {
+                item.update({'system.status': 0})
+            }
         })
 
     }

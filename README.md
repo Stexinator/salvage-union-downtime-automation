@@ -8,6 +8,9 @@
 ## Changelog
 
 ### 0.0.3
+- chassis, items and modules are repaired if they are below or equal to crawler tech level
+
+### 0.0.3
 - support uses
 
 ### 0.0.2

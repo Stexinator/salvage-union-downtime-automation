@@ -1,19 +1,21 @@
 import SalvageUnionDowntimeAutomationRestock from "./restock.js"
 
 export default class SalvageUnionDowntimeAutomation {
-    static async addDowntimeButton(html) {
+    static async addDowntimeButton(actor, html) {
 
         const descriptionSection = html.find(`section.description-editor`)
 
-        descriptionSection.append(`<button type='button' class="su-downtimeautomation-downtimebutton">Start Downtime</button>`)
+        descriptionSection.append(`<button type='button' class="su-downtimeautomation-downtimebutton" tech-level='${actor.system.techLevel}'>Start Downtime</button>`)
           
     }
 
-    static async startDowntime() {
+    static async startDowntime(ev) {
         let playerActors = game.actors.filter(actor => actor.hasPlayerOwner)
 
+        let techlevel = ev.currentTarget.attributes['tech-level'].value
+
         playerActors.forEach(actor => {
-            SalvageUnionDowntimeAutomationRestock.refillActor(actor)
+            SalvageUnionDowntimeAutomationRestock.refillActor(actor, techlevel)
         });
         await ChatMessage.create({ 
             content:  game.i18n.format("salvage-union-downtime-automation.pilotRefilled"), 
